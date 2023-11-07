@@ -26,8 +26,8 @@ class BasicAuth(Auth):
         if not authorization_header.startswith('Basic '):
             return None
 
-        base64_part = authorization_header[len('Basic '):].strip()
-        return base64_part
+        token = authorization_header.split(" ")[-1]
+        return token
 
     def decode_base64_authorization_header(
             self, base64_authorization_header: str) -> str:
